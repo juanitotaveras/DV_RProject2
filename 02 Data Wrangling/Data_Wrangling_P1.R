@@ -15,6 +15,9 @@ ggplot() +
   coord_cartesian()+
   scale_x_continuous()+
   scale_y_continuous()+
+  labs(title="DEATHS BY RESPIRATORY INFECTIONS IN TOP 0.05% COUNTRIES")+
+  labs(x="YEAR", y="TOTAL DEATHS")+
+  theme_grey()+
   layer (
     data = td2,
     mapping = aes(x=YEAR, y=TOTAL_DEATHS, color=COUNTRY),
