@@ -18,7 +18,7 @@ names(df) <-gsub("\\.+", "_", names(df))
 
 str(df) # Uncomment this and  run just the lines to here to get column types to use for getting the list of measures.
 
-measures <- c("Country", "Year", "Deaths_less_than_1_month", "Deaths_1_to_59_months", "Deaths_0_to_4_years") 
+measures <- c("Year", "Deaths_less_than_1_month", "Deaths_1_to_59_months", "Deaths_0_to_4_years") 
 
 write.csv(df, paste(gsub(".csv", "", file_path), ".reformatted.csv", sep=""), row.names=FALSE, na = "")
 

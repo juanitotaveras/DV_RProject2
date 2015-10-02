@@ -4,13 +4,46 @@ author: "Zareen Khayrattee, Kayne Khoury, Juanito Taveras"
 date: "October 1, 2015"
 output: html_document
 ---
+#Extraction, Transformation, Loading
+To fix our data so it can be loaded into Oracle correctly, we first replaced the periods in our column rows with underscores. 
+
+> names(df) <-gsub("\\.+", "_", names(df))
+
+
+We then, set our measures appropriately:
+
+
+> measures <- c("Year", "Deaths_less_than_1_month", "Deaths_1_to_59_months", "Deaths_0_to_4_years") 
+
+
+We created our re-formatted csv, then created our SQL concatenation
+
+
+> tableName <- gsub(" +", "_", gsub("[^A-z, 0-9, ]", "", gsub(".csv", "", file_path)))
+sql <- paste("CREATE TABLE", tableName, "Respiratory_Infections")
+if( length(measures) > 1 || ! is.na(dimensions)) {
+  for(d in dimensions) {
+    sql <- paste(sql, paste(d, "varchar2(4000),\n"))
+  }
+}
+if( length(measures) > 1 || ! is.na(measures)) {
+  for(m in measures) {
+    if(m != tail(measures, n=1)) sql <- paste(sql, paste(m, "number(38,4),\n"))
+    else sql <- paste(sql, paste(m, "number(38,4)\n"))
+  }
+}
+sql <- paste(sql, ");")
+cat(sql)
+
+
+And pasted it into SQL developer. We ran this script, then imported our reformatted CSV to create the table.
 
 ----------------
 
 #Plot 1
 The very interesting thing about this workflow is that there are no cumulative distribution of less than .10, or even less than .90 for that matter, meaning that no matter what country you are in, fatalities from respiratory infections in babies less than one month old is a huge problem. However, the risk of death from respiratory infections does decrease as the child gets older for people in most countries, with the very apparent exception of India, where it's still a huge problem in children up to almost 5 years of age. Death of children ages 0-1 month from respiratory infections is plotted on the X-axis, and Death of children ages 1-4 years is plotted on the Y-axis.
 ```{r}
-source("../02 Data Wrangling/DataWrangling_P2.R",echo=TRUE)
+source("../02 Data Wrangling/Data_Wrangling_P2.R",echo=TRUE)
 ```
 
 ----------------
@@ -19,4 +52,13 @@ The workflow shows the top ten mortality percentages of children less than one m
 
 ```{r}
 source("../02 Data Wrangling/Data_Wrangling_P3.R",echo=TRUE)
+```
+
+----------------
+#Plot 3
+This workflow portrays the total deaths resulting from respiratory infections in children under five across all countries worldwide, and is filtered to show the deaths in the top 0.05 percentile. One can clearly see that India has the highest number of total deaths, especially in the year 2000, but the deaths decreased exponentially over the course of the decade.
+While India's deaths decreased significantly year after year, and deaths in China also showed a significant decrease, the rest of the countries in this top 0.05% showed a relatively consistent occurence. Nigeria does experience a slight increase.
+
+```{r}
+source("../02 Data Wrangling/Data_Wrangling_P1.R", echo=TRUE)
 ```
