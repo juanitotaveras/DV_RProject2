@@ -15,5 +15,3 @@ df %>% mutate(Percent_deaths_less_than_one_month = cume_dist(DEATHS_LESS_THAN_1_
 df %>% mutate(ntile_0_to_1_month = ntile(DEATHS_LESS_THAN_1_MONTH,200)) %>% group_by(ntile_0_to_1_month) %>% summarise(n=n()) %>% ggplot(aes(x=ntile_0_to_1_month)) + geom_bar()
 
 df %>% mutate(TOTAL_DEATHS = DEATHS_LESS_THAN_1_MONTH + DEATHS_1_TO_59_MONTHS + DEATHS_0_TO_4_YEARS) %>% arrange(desc(TOTAL_DEATHS)) %>% group_by(YEAR) 
-
-ggplot(plot, aes(x=COUNTRY, y=TOTAL_DEATHS)) + geom_point()
