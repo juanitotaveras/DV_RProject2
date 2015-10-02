@@ -47,6 +47,7 @@ source("../02 Data Wrangling/Data_Wrangling_P2.R",echo=TRUE)
 ```
 
 ----------------
+
 #Plot 2
 The workflow shows the top ten mortality percentages of children less than one month old for countries with a total number of deaths greater than 100,000. The data first creates a secondary data frame that counts the total deaths for every country for all years. The data is then filtered only to consider countries with more than 100,000 total deaths. Another column is added to calculate the percentage of children that were less than one month old. The table is then arranged in descending order and plotted. Interestingly, amongst the countries with more than 100,000 deaths, the highest percentages less than one month old were either in Africa or Asia.
 
@@ -55,10 +56,23 @@ source("../02 Data Wrangling/Data_Wrangling_P3.R",echo=TRUE)
 ```
 
 ----------------
+
 #Plot 3
 This workflow portrays the total deaths resulting from respiratory infections in children under five across all countries worldwide, and is filtered to show the deaths in the top 0.05 percentile. One can clearly see that India has the highest number of total deaths, especially in the year 2000, but the deaths decreased exponentially over the course of the decade.
 While India's deaths decreased significantly year after year, and deaths in China also showed a significant decrease, the rest of the countries in this top 0.05% showed a relatively consistent occurence. Nigeria does experience a slight increase.
 
 ```{r}
 source("../02 Data Wrangling/Data_Wrangling_P1.R", echo=TRUE)
+```
+
+----------------
+
+#Summary
+```{r}
+source("../01 Data/summary.R", echo=TRUE)
+```
+
+#Subset
+```{r}
+source("../01 Data/subset.R", echo=TRUE)
 ```

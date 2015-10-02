@@ -13,5 +13,5 @@ pcnt <- df %>% group_by(COUNTRY) %>% summarise(total=sum(DEATHS_0_TO_4_YEARS),le
 
 mutate(pcnt,percent_less_1_month = (less_1_month / total)*100) %>% arrange(desc(percent_less_1_month)) %>% select(COUNTRY,percent_less_1_month) %>% head(10)
 
-mutate(pcnt, percent_less_1_month = (less_1_month / total)*100) %>% arrange(desc(percent_less_1_month)) %>% head(10) %>% ggplot(aes(x=percent_less_1_month,y=total,color=COUNTRY)) + labs(title="2000-2013") + geom_point()
+mutate(pcnt, percent_less_1_month = (less_1_month / total)*100) %>% arrange(desc(percent_less_1_month)) %>% head(10) %>% ggplot(aes(x=percent_less_1_month,y=total,color=COUNTRY)) + labs(title="2000-2013") + geom_point() + labs(x="PERCENT LESS THAN ONE MONTH", y="TOTAL DEATHS")
 

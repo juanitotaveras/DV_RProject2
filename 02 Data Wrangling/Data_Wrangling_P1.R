@@ -15,7 +15,7 @@ ggplot() +
   coord_cartesian()+
   scale_x_continuous()+
   scale_y_continuous()+
-  labs(title="DEATHS BY IN TOP 0.05% COUNTRIES")+
+  labs(title="DEATHS IN TOP 0.05% COUNTRIES")+
   labs(x="YEAR", y="TOTAL DEATHS")+
   theme_grey()+
   layer (
