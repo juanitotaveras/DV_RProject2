@@ -12,3 +12,11 @@ The very interesting thing about this workflow is that there are no cumulative d
 ```{r}
 source("../02 Data Wrangling/DataWrangling_P2.R",echo=TRUE)
 ```
+
+----------------
+#Plot 2
+The workflow shows the top ten mortality percentages of children less than one month old for countries with a total number of deaths greater than 100,000. The data first creates a secondary data frame that counts the total deaths for every country for all years. The data is then filtered only to consider countries with more than 100,000 total deaths. Another column is added to calculate the percentage of children that were less than one month old. The table is then arranged in descending order and plotted. Interestingly, amongst the countries with more than 100,000 deaths, the highest percentages less than one month old were either in Africa or Asia.
+
+```{r}
+source("../02 Data Wrangling/Data_Wrangling_P3.R",echo=TRUE)
+```
