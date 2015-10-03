@@ -41,7 +41,7 @@ And pasted it into SQL developer. We ran this script, then imported our reformat
 ----------------
 
 #Plot 1
-The very interesting thing about this workflow is that there are no cumulative distribution of less than .10, or even less than .90 for that matter, meaning that no matter what country you are in, fatalities from respiratory infections in babies less than one month old is a huge problem. However, the risk of death from respiratory infections does decrease as the child gets older for people in most countries, with the very apparent exception of India, where it's still a huge problem in children up to almost 5 years of age. Death of children ages 0-1 month from respiratory infections is plotted on the X-axis, and Death of children ages 1-4 years is plotted on the Y-axis.
+The very interesting thing about this workflow is that there are no cumulative distribution of less than .10, or even less than .90 for that matter, meaning that no matter what country you are in, fatalities from respiratory infections in babies less than one month old is a huge problem. However, the risk of death from respiratory infections does decrease as the child gets older for people in most countries, with the very apparent exception of India, where it's still a huge problem in children up to almost 5 years of age. Deaths of children ages 0-1 month from respiratory infections is plotted on the X-axis, and Total Deaths of children ages 1-59 months is plotted on the Y-axis.
 ```{r}
 source("../02 Data Wrangling/Data_Wrangling_P2.R",echo=TRUE)
 ```

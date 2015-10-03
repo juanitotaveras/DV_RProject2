@@ -12,6 +12,6 @@ df <- data.frame(fromJSON(getURL(URLencode('129.152.144.84:5001/rest/native/?que
 df %>% mutate(Percent_deaths_less_than_one_month = cume_dist(DEATHS_LESS_THAN_1_MONTH)) %>% filter(Percent_deaths_less_than_one_month <=.10 | Percent_deaths_less_than_one_month >= .90) %>% ggplot(aes(x=Percent_deaths_less_than_one_month, y=DEATHS_1_TO_59_MONTHS, color=COUNTRY)) + geom_point() + labs(x="CUMULATIVE DISTRIBUTION OF DEATHS", y="TOTAL DEATHS IN 1 TO 59 MONTHS") + labs(title="DEATHS IN BABIES LESS THAN ONE MONTH OLD")
 
 #was trying to make histogram...basically we can see that data is pretty evenly distributed and not skewed
-df %>% mutate(ntile_0_to_1_month = ntile(DEATHS_LESS_THAN_1_MONTH,200)) %>% group_by(ntile_0_to_1_month) %>% summarise(n=n()) %>% ggplot(aes(x=ntile_0_to_1_month)) + geom_bar()
+#df %>% mutate(ntile_0_to_1_month = ntile(DEATHS_LESS_THAN_1_MONTH,200)) %>% group_by(ntile_0_to_1_month) %>% summarise(n=n()) %>% ggplot(aes(x=ntile_0_to_1_month)) + geom_bar()
 
 df %>% mutate(TOTAL_DEATHS = DEATHS_LESS_THAN_1_MONTH + DEATHS_1_TO_59_MONTHS + DEATHS_0_TO_4_YEARS) %>% arrange(desc(TOTAL_DEATHS)) %>% group_by(YEAR) 
